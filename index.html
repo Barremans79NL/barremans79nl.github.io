@@ -13,7 +13,7 @@
 
     body {
       font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-      background: #f9fafb;
+      background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
       color: #111827;
       display: flex;
       align-items: center;
@@ -30,6 +30,9 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.05);
       max-width: 600px;
       width: 100%;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease-out forwards;
     }
 
     h1 {
@@ -52,15 +55,32 @@
       border-radius: 0.5rem;
       text-decoration: none;
       font-weight: 600;
-      transition: background 0.2s;
+      transition: transform 0.2s, background 0.2s;
     }
 
     .button:hover {
       background: #374151;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
   <div class="card">
     <h1>Dit domein is geregistreerd</h1>
-    <p><span id="domain"></span> is eigendom v
+    <p><span id="domain"></span> is eigendom van de familie Passchier-Hupkes.</p>
+    <a href="https://passchier.dev" class="button">Bezoek onze website</a>
+  </div>
+
+  <script>
+    // Domeinnaam automatisch invullen
+    document.getElementById("domain").textContent = window.location.hostname;
+  </script>
+</body>
+</html>
